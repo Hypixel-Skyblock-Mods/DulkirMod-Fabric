@@ -9,7 +9,6 @@ import net.minecraft.client.gui.screens.inventory.CreativeModeInventoryScreen;
 import net.minecraft.client.gui.screens.inventory.InventoryScreen;
 import net.minecraft.world.entity.LivingEntity;
 import org.spongepowered.asm.mixin.Mixin;
-import org.spongepowered.asm.mixin.injection.Inject;
 
 @Mixin(InventoryScreen.class)
 public class InventoryScreenMixin {
@@ -19,7 +18,7 @@ public class InventoryScreenMixin {
      * guide for how to implement this yourself - this entire feature is tech debt and terrible injections.
      */
     @WrapMethod(
-            method = "renderEntityInInventoryFollowsMouse"
+            method = "extractEntityInInventoryFollowsMouse"
     )
     private static void dulkir$drawEntity(GuiGraphicsExtractor guiGraphics, int x1, int y1, int x2, int y2, int size,
                                           float f, float mouseX, float mouseY, LivingEntity entity,
