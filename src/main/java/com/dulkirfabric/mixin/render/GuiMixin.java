@@ -18,7 +18,7 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 public class GuiMixin {
 
     @Inject(
-            method = "renderEffects",
+            method = "extractEffects",
             at = @At("HEAD"),
             cancellable = true
     )
@@ -42,7 +42,7 @@ public class GuiMixin {
     }
 
     @Inject(
-            method = "renderArmor",
+            method = "extractArmor",
             at = @At("HEAD"),
             cancellable = true
     )
@@ -53,7 +53,7 @@ public class GuiMixin {
     }
 
     @Inject(
-            method = "renderFood",
+            method = "extractFood",
             at = @At("HEAD"),
             cancellable = true
     )
@@ -64,7 +64,7 @@ public class GuiMixin {
     }
 
     @Inject(
-            method = "renderSelectedItemName",
+            method = "extractSelectedItemName",
             at = @At("HEAD"),
             cancellable = true
     )
