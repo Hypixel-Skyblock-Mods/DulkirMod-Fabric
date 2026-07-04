@@ -10,7 +10,6 @@
     "io.MouseHandlerMixin",
     "io.SoundEngineMixin",
     "render.CameraTypeMixin",
-    "render.EffectsInInventoryMixin",
     "render.EntityRendererMixin",
     "render.GameRendererMixin",
     "render.GuiGraphicsMixin",
