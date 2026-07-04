@@ -19,13 +19,15 @@ public abstract class ItemStackMixin {
 
     @Shadow public abstract Item getItem();
 
+    @Shadow public abstract ItemStack copy();
+
     @Inject(
             method = "getTooltipLines",
             at = @At("HEAD")
     )
     private void onGetTooltip(Item.TooltipContext tooltipContext, Player player, TooltipFlag tooltipFlag,
                               CallbackInfoReturnable<List<Component>> cir) {
-        ItemChangeHandler.INSTANCE.handle(this.getItem().getName().getString());
+        ItemChangeHandler.INSTANCE.handle(this.getItem().getName(this.copy()).getString());
     }
 
 }

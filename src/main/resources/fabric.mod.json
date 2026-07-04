@@ -21,9 +21,6 @@
 		"client": [
 			"com.dulkirfabric.DulkirModFabric::onInitializeClient"
 		],
-		"jarvis": [
-			"com.dulkirfabric.util.JarvisIntegrationPlugin"
-		],
         "modmenu": [
             "com.dulkirfabric.util.DulkirModMenuPlugin"
         ]

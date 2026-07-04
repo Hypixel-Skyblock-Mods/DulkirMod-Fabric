@@ -1,8 +1,6 @@
 package com.dulkirfabric.util.render
 
-import com.dulkirfabric.util.JarvisIntegrationPlugin
 import kotlinx.serialization.Serializable
-import moe.nea.jarvis.api.JarvisHud
 import net.minecraft.network.chat.Component
 import net.minecraft.resources.Identifier
 import org.joml.Matrix3x2f
@@ -14,46 +12,46 @@ class HudElement (var meta: HudMeta,
                   private val label: Component,
                   private val width: Int,
                   private val height: Int
-    ): JarvisHud, JarvisHud.Scalable {
+    ) {
 
-    override fun getHudId(): Identifier {
+    fun getHudId(): Identifier {
         return this.identifier;
     }
 
-    override fun getPosition(): Vector2ic {
+    fun getPosition(): Vector2ic {
         return Vector2i(this.meta.xPos, this.meta.yPos)
     }
 
-    override fun setPosition(position: Vector2ic) {
+    fun setPosition(position: Vector2ic) {
         this.meta.xPos = position.x()
         this.meta.yPos = position.y()
     }
 
-    override fun isEnabled(): Boolean {
+    fun isEnabled(): Boolean {
         return true
     }
 
-    override fun isVisible(): Boolean {
+    fun isVisible(): Boolean {
         return true
     }
 
-    override fun getUnscaledWidth(): Int {
+    fun getUnscaledWidth(): Int {
         return this.width
     }
 
-    override fun getUnscaledHeight(): Int {
+    fun getUnscaledHeight(): Int {
         return this.height
     }
 
-    override fun getLabel(): Component {
+    fun getLabel(): Component {
         return this.label
     }
 
-    override fun getScale(): Float {
+    fun getScale(): Float {
         return this.meta.scale
     }
 
-    override fun setScale(scale: Float) {
+    fun setScale(scale: Float) {
         this.meta.scale = scale
     }
 
@@ -65,7 +63,8 @@ class HudElement (var meta: HudMeta,
     )
 
     fun applyTransformations(matrices: Matrix3x2f?) {
-        applyTransformations(JarvisIntegrationPlugin.jarvis, matrices)
+        matrices?.translate(meta.xPos.toFloat(), meta.yPos.toFloat())
+        matrices?.scale(meta.scale, meta.scale)
     }
 
 }
