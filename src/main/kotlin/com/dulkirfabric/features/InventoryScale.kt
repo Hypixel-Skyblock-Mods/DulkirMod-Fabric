@@ -13,7 +13,7 @@ object InventoryScale {
         if (!DulkirConfig.configOptions.invScaleBool) {
             return 1f
         }
-        if (mc.screen !is AbstractContainerScreen<*>) {
+        if (mc.gui.screen() !is AbstractContainerScreen<*>) {
             return 1f
         }
         return DulkirConfig.configOptions.inventoryScale

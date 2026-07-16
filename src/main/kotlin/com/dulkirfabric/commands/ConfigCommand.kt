@@ -11,7 +11,7 @@ object ConfigCommand {
     fun register(dispatcher: CommandDispatcher<FabricClientCommandSource>, buildContext: CommandBuildContext) {
         dispatcher.register(LiteralArgumentBuilder.literal<FabricClientCommandSource>("dulkir").executes {
             mc.schedule {
-                mc.setScreen(DulkirConfig().screen)
+                mc.gui.setScreen(DulkirConfig().screen)
             }
             return@executes 0
         })

@@ -5,8 +5,8 @@ import com.mojang.blaze3d.pipeline.ColorTargetState
 import com.mojang.blaze3d.pipeline.DepthStencilState
 import com.mojang.blaze3d.pipeline.RenderPipeline
 import com.mojang.blaze3d.platform.CompareOp
+import com.mojang.blaze3d.PrimitiveTopology
 import com.mojang.blaze3d.vertex.DefaultVertexFormat
-import com.mojang.blaze3d.vertex.VertexFormat
 import net.minecraft.client.renderer.RenderPipelines
 
 object DulkirRenderPipelines {
@@ -14,7 +14,8 @@ object DulkirRenderPipelines {
     val DULKIR_LINES: RenderPipeline = RenderPipelines.register(
         RenderPipeline.builder(RenderPipelines.LINES_SNIPPET)
             .withLocation("pipeline/line_strip")
-            .withVertexFormat(DefaultVertexFormat.POSITION_COLOR_NORMAL, VertexFormat.Mode.DEBUG_LINE_STRIP)
+            .withVertexBinding(0, DefaultVertexFormat.POSITION_COLOR_NORMAL)
+            .withPrimitiveTopology(PrimitiveTopology.DEBUG_LINE_STRIP)
             .withCull(false)
             .withColorTargetState(ColorTargetState(BlendFunction.TRANSLUCENT))
             .withDepthStencilState(DepthStencilState(CompareOp.LESS_THAN_OR_EQUAL, true))
@@ -25,7 +26,8 @@ object DulkirRenderPipelines {
         RenderPipeline.builder(RenderPipelines.LINES_SNIPPET)
             .withLocation("pipeline/line_strip")
             .withShaderDefine("shad")
-            .withVertexFormat(DefaultVertexFormat.POSITION_COLOR_NORMAL, VertexFormat.Mode.DEBUG_LINE_STRIP)
+            .withVertexBinding(0, DefaultVertexFormat.POSITION_COLOR_NORMAL)
+            .withPrimitiveTopology(PrimitiveTopology.DEBUG_LINE_STRIP)
             .withCull(false)
             .withColorTargetState(ColorTargetState(BlendFunction.TRANSLUCENT))
             .withDepthStencilState(DepthStencilState(CompareOp.ALWAYS_PASS, false))
@@ -36,7 +38,8 @@ object DulkirRenderPipelines {
         RenderPipeline.builder(RenderPipelines.DEBUG_FILLED_SNIPPET)
             .withLocation("pipeline/debug_filled_box")
             .withCull(false)
-            .withVertexFormat(DefaultVertexFormat.POSITION_COLOR, VertexFormat.Mode.TRIANGLE_STRIP)
+            .withVertexBinding(0, DefaultVertexFormat.POSITION_COLOR)
+            .withPrimitiveTopology(PrimitiveTopology.TRIANGLE_STRIP)
             .withDepthStencilState(DepthStencilState(CompareOp.LESS_THAN_OR_EQUAL, true))
             .withColorTargetState(ColorTargetState(BlendFunction.TRANSLUCENT))
             .build()
@@ -46,7 +49,8 @@ object DulkirRenderPipelines {
         RenderPipeline.builder(RenderPipelines.DEBUG_FILLED_SNIPPET)
             .withLocation("pipeline/debug_filled_box")
             .withCull(false)
-            .withVertexFormat(DefaultVertexFormat.POSITION_COLOR, VertexFormat.Mode.TRIANGLE_STRIP)
+            .withVertexBinding(0, DefaultVertexFormat.POSITION_COLOR)
+            .withPrimitiveTopology(PrimitiveTopology.TRIANGLE_STRIP)
             .withDepthStencilState(DepthStencilState(CompareOp.ALWAYS_PASS, false))
             .withColorTargetState(ColorTargetState(BlendFunction.TRANSLUCENT))
             .build()
@@ -56,7 +60,8 @@ object DulkirRenderPipelines {
         RenderPipeline.builder(RenderPipelines.DEBUG_FILLED_SNIPPET)
             .withLocation("pipeline/debug_quads")
             .withCull(false)
-            .withVertexFormat(DefaultVertexFormat.POSITION_COLOR, VertexFormat.Mode.QUADS)
+            .withVertexBinding(0, DefaultVertexFormat.POSITION_COLOR)
+            .withPrimitiveTopology(PrimitiveTopology.QUADS)
             .withDepthStencilState(DepthStencilState(CompareOp.LESS_THAN_OR_EQUAL, true))
             .withColorTargetState(ColorTargetState(BlendFunction.TRANSLUCENT))
             .build()
@@ -66,7 +71,8 @@ object DulkirRenderPipelines {
         RenderPipeline.builder(RenderPipelines.DEBUG_FILLED_SNIPPET)
             .withLocation("pipeline/debug_quads")
             .withCull(false)
-            .withVertexFormat(DefaultVertexFormat.POSITION_COLOR, VertexFormat.Mode.QUADS)
+            .withVertexBinding(0, DefaultVertexFormat.POSITION_COLOR)
+            .withPrimitiveTopology(PrimitiveTopology.QUADS)
             .withDepthStencilState(DepthStencilState(CompareOp.ALWAYS_PASS, false))
             .withColorTargetState(ColorTargetState(BlendFunction.TRANSLUCENT))
             .build()

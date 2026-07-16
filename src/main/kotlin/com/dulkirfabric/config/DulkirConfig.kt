@@ -44,7 +44,7 @@ class DulkirConfig {
         builder.setDefaultBackgroundTexture(Identifier.parse("minecraft:textures/block/oak_planks.png"))
         builder.setGlobalized(true)
         builder.setGlobalizedExpanded(false)
-        builder.setParentScreen(mc.screen)
+        builder.setParentScreen(mc.gui.screen())
         builder.setSavingRunnable(::saveConfig)
         val entryBuilder = builder.entryBuilder()
         val general = builder.getOrCreateCategory(Component.literal("General"))
@@ -324,7 +324,7 @@ class DulkirConfig {
         )
         bridge.addEntry(
             entryBuilder.startColorField(Component.literal("Bridge User Color"), configOptions.bridgeNameColor)
-                .setDefaultValue(ChatFormatting.GOLD.color!!)
+                .setDefaultValue(TextColor.GOLD.value)
                 .setSaveConsumer { newValue -> configOptions.bridgeNameColor = newValue }
                 .build()
         )
@@ -423,7 +423,7 @@ class DulkirConfig {
         var arachneSpawnTimer: Boolean = false,
         var bridgeFormatter: Boolean = false,
         var bridgeBotName: String = "Dilkur",
-        var bridgeNameColor: Int = ChatFormatting.GOLD.color!!,
+        var bridgeNameColor: Int = TextColor.GOLD.value,
         val positions: MutableMap<String, HudElement.HudMeta> = mutableMapOf(),
         var hudifyActionBar: Boolean = false,
         var showEHP: Boolean = false,

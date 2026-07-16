@@ -43,7 +43,7 @@ public class GuiGraphicsMixin {
         if (!DulkirConfig.ConfigVars.getConfigOptions().getToolTipFeatures()) {
             return operation.call(positionerInstance, sw, sh, mx, my, tw, th);
         }
-        net.minecraft.client.gui.screens.Screen screen = Minecraft.getInstance().screen;
+        net.minecraft.client.gui.screens.Screen screen = Minecraft.getInstance().gui.screen();
         if (!(screen instanceof AbstractContainerScreen<?>)) {
             return operation.call(positionerInstance, sw, sh, mx, my, tw, th);
         }
@@ -80,7 +80,7 @@ public class GuiGraphicsMixin {
         if (!DulkirConfig.ConfigVars.getConfigOptions().getToolTipFeatures()) {
             return;
         }
-        if (Minecraft.getInstance().screen instanceof AbstractContainerScreen<?>) {
+        if (Minecraft.getInstance().gui.screen() instanceof AbstractContainerScreen<?>) {
             TooltipImpl.INSTANCE.applyScale(this.pose);
         }
     }

@@ -28,7 +28,7 @@ object TablistUtils {
     @EventHandler
     fun onLongUpdate(event: LongUpdateEvent) {
         if (mc.player == null) return
-        tablist = mc.gui.tabList.playerInfos
+        tablist = mc.gui.hud.tabList.playerInfos
         updatePersistentData()
     }
 

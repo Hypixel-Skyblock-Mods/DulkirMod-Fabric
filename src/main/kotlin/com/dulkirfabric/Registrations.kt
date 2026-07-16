@@ -23,10 +23,7 @@ import com.dulkirfabric.util.ActionBarUtil
 import com.dulkirfabric.util.ScoreBoardUtils
 import com.dulkirfabric.util.TablistUtils
 import com.dulkirfabric.util.Utils
-import com.dulkirfabric.util.render.DulkirRenderTypes
 import com.dulkirfabric.util.render.HudRenderUtil
-import com.dulkirfabric.util.render.RenderUtil
-import com.mojang.blaze3d.vertex.BufferBuilder
 import net.fabricmc.fabric.api.client.command.v2.ClientCommandRegistrationCallback
 import net.fabricmc.fabric.api.client.event.lifecycle.v1.ClientEntityEvents
 import net.fabricmc.fabric.api.client.event.lifecycle.v1.ClientTickEvents
@@ -122,12 +119,6 @@ object Registrations {
 
         LevelRenderEvents.END_MAIN.register { context ->
             WorldRenderLastEvent(context).post()
-            DulkirRenderTypes.TYPES.forEach {
-                val buffer = RenderUtil.getBufferFor(it)
-                val meshData = buffer.build() ?: return@forEach
-                it.draw(meshData)
-            }
-            RenderUtil.endFrame()
         }
 
         ScreenEvents.BEFORE_INIT.register(

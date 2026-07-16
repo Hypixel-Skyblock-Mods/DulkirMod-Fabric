@@ -9,6 +9,7 @@ import net.minecraft.ChatFormatting
 import net.minecraft.network.chat.Component
 import net.minecraft.network.chat.FormattedText
 import net.minecraft.network.chat.Style
+import net.minecraft.network.chat.TextColor
 import net.minecraft.world.scores.PlayerTeam
 import java.util.*
 
@@ -61,9 +62,11 @@ object ScoreBoardUtils {
     fun Component.formattedString(): String {
         val sb = StringBuilder()
         visit(FormattedText.StyledContentConsumer<Unit> { style, string ->
-            val c = ChatFormatting.getByName(style.color?.name)
+            val c = ChatFormatting.values().firstOrNull {
+                TextColor.fromLegacyFormat(it) == style.color
+            }
             if (c != null) {
-                sb.append("§${c.code}")
+                sb.append(c)
             }
             if (style.isUnderlined) {
                 sb.append("§n")

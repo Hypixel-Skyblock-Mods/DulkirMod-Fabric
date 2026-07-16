@@ -25,7 +25,7 @@ public class InventoryScreenMixin {
                                           Operation<Void> original) {
         float newX, newY;
         float scale = InventoryScale.INSTANCE.getScale();
-        if (DulkirModFabric.mc.screen instanceof CreativeModeInventoryScreen) {
+        if (DulkirModFabric.mc.gui.screen() instanceof CreativeModeInventoryScreen) {
             newX = mouseX / scale;
             newY = mouseY / scale;
         } else {
